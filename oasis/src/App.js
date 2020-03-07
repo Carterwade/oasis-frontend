@@ -1,29 +1,21 @@
 import React from 'react';
-import './App.css';
-import journal from './journal.jpg';
-import './searchScholar.js';
+import { BrowserRouter as Router,Route} from 'react-router-dom';
+import Home from './Home';
+import Paper from './Paper';
 
+ 
+class App extends React.Component {
+  render(){
+  return(
+    <Router >
+      <div>
+        <Route exact path="/home" component={Home} />
+        <Route path="/home/paper" component={Paper} />
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={journal} alt=""/>
-      
-        <p>
-          ScholarExplorer
-        </p> 
-
-        <p>  
-         <input id="Scholar"/>
-        </p>
-        
-        <button type="button" onclick="searchScholar()">
-          Search
-        </button>
-      </header>
-    </div>
-  );
+      </div>
+    </Router>
+    )
+  }
 }
 
 export default App;
