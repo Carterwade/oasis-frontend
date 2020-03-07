@@ -4,19 +4,34 @@ import './Home.css';
 import journal from './journal.jpg';
  
 class Home extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            filterText: '',
+        }
+
+        this.handleSearch=this.handleSearch.bind(this);
+    }
+
+    handleSearch(keywods){
+        this.setState({
+            filterText:keywods
+        });
+    }
+
     render(){
         return (
-            <div className="App">
-                <header className="App-header">
+            <div className="home">
+                <header className="home-header">
                     <img src={journal} alt=""/>          
                     <p>
                         ScholarExplorer
                     </p>     
                     <p>  
-                        <input id="Scholar"/>
+                        <input />
                     </p>    
                      
-                    <Link to="/home/paper/" style={{color:'black'}}>
+                    <Link to="/home/author/" style={{color:'black'}}>
                         <div>
                             <button type="button" onclick="searchScholar()">
                                 Search
@@ -28,5 +43,5 @@ class Home extends React.Component{
         );
     }
 }
- 
+
 export default Home;

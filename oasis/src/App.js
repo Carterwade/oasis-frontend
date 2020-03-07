@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router,Route} from 'react-router-dom';
 import Home from './Home';
-import Paper from './Paper';
+import Author from './Author';
+import Keyword from './Keyword';
 
  
 class App extends React.Component {
@@ -10,8 +11,8 @@ class App extends React.Component {
     <Router >
       <div>
         <Route exact path="/home" component={Home} />
-        <Route path="/home/paper" component={Paper} />
-
+        <Route path="/home/Author" component={Author} />
+        <Route path="/home/Keyword" component={Keyword} />
       </div>
     </Router>
     )
