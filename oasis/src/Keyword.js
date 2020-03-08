@@ -2,7 +2,7 @@ import React from 'react';
 
 class Keyword extends React.Component{
     constructor(props) { 
-        supr(props);
+        super(props);
         this.state = {
             info : '',
         }

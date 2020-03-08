@@ -2,12 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Home.css';
 import journal from './journal.jpg';
- 
+
 class Home extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            filterText: '',
+            text: '',
         }
 
         this.handleSearch=this.handleSearch.bind(this);
@@ -15,7 +15,7 @@ class Home extends React.Component{
 
     handleSearch(keywods){
         this.setState({
-            filterText:keywods
+            text:keywods
         });
     }
 
@@ -27,13 +27,12 @@ class Home extends React.Component{
                     <p>
                         ScholarExplorer
                     </p>     
-                    <p>  
-                        <input />
-                    </p>    
-                     
+
+                    
+                    
                     <Link to="/home/author/" style={{color:'black'}}>
                         <div>
-                            <button type="button" onclick="searchScholar()">
+                            <button type="button">
                                 Search
                             </button>
                         </div>     
