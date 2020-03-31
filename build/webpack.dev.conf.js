@@ -55,6 +55,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      favicon:'src/assets/img/graduation_cap.ico',
       inject: true
     }),
     // copy custom static assets
