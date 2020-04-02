@@ -80,7 +80,7 @@ export default {
   methods: {
     affiliationActiveness() { // 方法
       var activeness = this.$echarts.init(this.$refs.affiliationActiveness)
-      var value = this.affiliation.activeness
+      var value = this.affiliation.activeness/5
       var chartData = {
         name: '活跃度',
         value: value,
