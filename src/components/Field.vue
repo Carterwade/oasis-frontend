@@ -31,6 +31,7 @@
             </div>
           </div>
         </div>
+        <div ref="keyAffiliations" style="width:100%;height:500px"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"  style="font-weight: bold;text-align: left">论文推荐</h3>
@@ -356,12 +357,125 @@ export default {
         ]
       })
     },
+    affiliationChart () {
+      var aChart=this.$echarts.init(this.$refs.keyAffiliations)
+      var affiliations=this.field.keyAffiliations
+      var articleNum=this.field.articleNumOfAffiliations
+      aChart.setOption({
+        backgroundColor: '#fff',
+        title:{
+          text:'关键机构',
+          textStyle: {
+            fontWeight: 'Bold',
+            fontSize: 30,
+            color: '#000000'
+          },
+          left: 'center'
+        },
+        grid: {
+          top: '5%',
+          right: '10%',
+          left: '10%',
+          bottom: '30%'
+        },
+        xAxis: [{
+          type: 'category',
+          color: '#59588D',
+          data: affiliations,
+          axisLabel: {
+            interval:0,
+            rotate:38,
+            margin: 10,
+            color: '#000000',
+            textStyle: {
+              fontSize: 10
+            },
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(107,107,107,0.37)',
+            }
+          },
+          axisTick: {
+            show: false
+          },
+        }],
+        yAxis: [{
+          min: 0,
+          max: 10,
+          axisLabel: {
+            formatter: '{value}篇',
+            color: '#999',
+            textStyle: {
+              fontWeight:'Bold',
+              fontSize: 15
+            },
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(107,107,107,0.37)',
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(131,101,101,0.2)',
+              type: 'dashed',
+            }
+          }
+        }],
+        series: [{
+          type: 'bar',
+          data: articleNum,
+          barWidth: '50px',
+          itemStyle: {
+            normal: {
+              color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: '#FF9A22' // 0% 处的颜色
+              }, {
+                offset: 1,
+                color: '#FFD56E' // 100% 处的颜色
+              }], false),
+              barBorderRadius: [30, 30, 0, 0],
+            }
+          },
+          label: {
+            normal: {
+              show: true,
+              fontSize: 18,
+              fontWeight: 'bold',
+              color: '#333',
+              position: 'top',
+            }
+          }
+        },{
+          data: articleNum,
+          type: 'line',
+          smooth: true,
+          name: '折线图',
+          symbol: 'none',
+          lineStyle: {
+            color: '#3275FB',
+            width: 4,
+            shadowColor: 'rgba(0, 0, 0, 0.3)',//设置折线阴影
+            shadowBlur: 15,
+            shadowOffsetY: 20,
+          }
+        }
+        ]
+      })
+
+    }
   },
   mounted () {
     clearTimeout(this.timer);  //清除延迟执行
     this.timer = setTimeout(()=>{   //设置延迟执行
       console.log('ok')
       this.fieldActiveness()
+      this.affiliationChart()
     },5000)
   }
 
