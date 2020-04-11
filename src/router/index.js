@@ -6,6 +6,10 @@ import Field from '@/components/Field'
 import Conference from '@/components/Conference'
 import FieldRanking from '@/components/FieldRanking.vue'
 import AffiliationRanking from '@/components/AffiliationRanking'
+import Home from '@/components/Home'
+import ArticleSearch from "../components/ArticleSearch";
+import AuthorSearch from "@/components/AuthorSearch";
+import Article from "@/components/Article";
 
 Vue.use(Router)
 
@@ -40,6 +44,26 @@ export default new Router({
       path: '/affiliations/rank',
       name: 'AffiliationRanking',
       component: AffiliationRanking
+    },
+    {
+      path: '/articles/findArticles',
+      name: 'ArticleSearch',
+      component: ArticleSearch
+    },
+    {
+      path: '/authors/findAuthors',
+      name: 'AuthorSearch',
+      component: AuthorSearch
+    },
+    {
+      path: '/articles/info/:type/:id',
+      name: 'ArticleInfo',
+      component: Article
+    },
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
     }
   ]
 })
