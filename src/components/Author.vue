@@ -34,7 +34,7 @@
         <div>
           <h4 style="float:left;margin-left:10px;margin-top:0px;font-weight: bold">参与会议:</h4>
           <div style="float:left" v-for="(conference,i) in author.conference">
-            <a href="#" style="float:left">{{conference+', '}}</a>
+            <a v-bind:href="'#/conferences/info/'+conference.id" style="float:left">{{conference.name+', '}}</a>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
     </div>
     <div class="bs-docs-section" style="float:left;width:100%" v-for="(article,i) in author.recommendArticle">
       <div class="bs-callout bs-callout-success" style="clear:both;float:left">
-        <span class="glyphicon glyphicon-bookmark" style="float: left"/><h4 style="text-align: left">{{article.documentTitle}}</h4>
+        <span class="glyphicon glyphicon-bookmark" style="float: left"/><a v-bind:href="'#/articles/info/'+article.type+'/'+article.id"><h4 style="text-align: left" v-html="article.documentTitle"></h4></a>
         <p style="text-align: left">作者： {{article.authors}}-----{{article.publicationYear}}</p>
         <a style="text-align: left; float:left" v-bind:href="article.pdfLink">{{article.pdfLink}}</a>
       </div>

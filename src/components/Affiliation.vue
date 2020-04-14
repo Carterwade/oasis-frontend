@@ -38,7 +38,7 @@
           <div class="panel-body">
             <div class="bs-docs-section" style="float:left;width:100%" v-for="(article,i) in affiliation.recentArticle">
               <div class="bs-callout bs-callout-success" style="clear:both;float:left">
-                <span class="glyphicon glyphicon-bookmark" style="float: left"/><h4 style="text-align: left">{{article.documentTitle}}</h4>
+                <span class="glyphicon glyphicon-bookmark" style="float: left"/><a v-bind:href="'#/articles/info/'+article.type+'/'+article.id"><h4 style="text-align: left" v-html="article.documentTitle"></h4></a>
                 <p style="text-align: left">作者： {{article.authors}}-----{{article.publicationYear}}</p>
                 <a style="text-align: left; float:left" v-bind:href="article.pdfLink">{{article.pdfLink}}</a>
               </div>

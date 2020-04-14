@@ -19,8 +19,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="#">最新<span class="sr-only">(current)</span></a></li>
-              <li><a href="#">会议</a></li>
+              <li><a href="#/fields/rank">热门领域<span class="sr-only">(current)</span></a></li>
+              <li><a href="#/affiliations/rank">热门机构</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
