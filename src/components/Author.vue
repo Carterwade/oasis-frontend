@@ -37,11 +37,30 @@
             <a v-bind:href="'#/conferences/info/'+conference.id" style="float:left">{{conference.name+', '}}</a>
           </div>
         </div>
+        <br><br><br><br><br><br>
+        <div>
+          <h4 style="float:left;margin-left:10px;margin-top:0px;font-weight: bold">相关作者:</h4>
+          <div  v-for="(author,i) in author.relatedAuthors">
+          <div class="panel-body" style="float:left;">
+            <a style="float:left;position:relative;z-index: 2;text-align: left" v-bind:href="'#/authors/info/'+author.id" class="glyphicon glyphicon-user">{{author.name}} </a><p style="float:left">&nbsp;&nbsp;</p>
+          </div>
+        </div>
+        </div>
       </div>
     </div>
     <br><br><br><br><br><br>
     <div ref="activity" style="width:100%;height:500px"></div>
     <br><br>
+    <div>
+      <h4 style="float:left;margin-left:10px;margin-top:0px;font-weight: bold">合作预测:</h4>
+      <div  v-for="(author,i) in author.similarAuthors">
+        <div class="panel-body" style="float:left;">
+          <a style="float:left;position:relative;z-index: 2;text-align: left" v-bind:href="'#/authors/info/'+author.id" class="glyphicon glyphicon-user">{{author.name}} </a><p style="float:left">&nbsp;&nbsp;</p>
+        </div>
+      </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="page-header">
       <h2 style="font-weight: bold;text-align: left">论文推荐</h2>
     </div>
@@ -262,7 +281,7 @@ export default {
       console.log('ok')
       this.liquidFill()
       this.activityChart()
-    },5000)
+    },15000)
   }
 
 }
