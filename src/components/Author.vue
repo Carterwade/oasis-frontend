@@ -50,6 +50,7 @@
     </div>
     <br><br><br><br><br><br>
     <div ref="activity" style="width:100%;height:500px"></div>
+    <div ref="conGraph" style="width:100%;height:700px"></div>
     <br><br>
     <div>
       <h4 style="float:left;margin-left:10px;margin-top:0px;font-weight: bold">合作预测:</h4>
@@ -273,6 +274,142 @@ export default {
         ]
       })
 
+    },
+    conGraph () {
+        var graph=this.$echarts.init(this.$refs.conGraph)
+        var data=this.author.categories
+        var authorName=this.author.name
+        var links=this.author.links
+        var kinds=this.author.kinds
+      graph.setOption({
+        backgroundColor: new this.$echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+          offset: 0,
+          color: '#f7f8fa'
+        }, {
+          offset: 1,
+          color: '#cdd0d5'
+        }]),
+        title:{
+          text: "作者方向分析",
+          subtext: authorName,
+          top: "top",
+          left: "center"
+        },
+        tooltip: {},
+        legend: [{
+          tooltip: {
+            show: true
+          },
+          selectedMode: 'false',
+          bottom: 20,
+          data:['2013','2014','2015','2016','2017','2018','2019']
+        }],
+        toolbox: {
+          show : true,
+          feature : {
+            dataView : {show: true, readOnly: true},
+            restore : {show: true},
+            saveAsImage : {show: true}
+          }
+        },
+        animationDuration: 3000,
+        animationEasingUpdate: 'quinticInOut',
+        series: [{
+          name: authorName,
+          type: 'graph',
+          layout: 'force',
+
+          force: {
+            repulsion: 50
+          },
+          data: data,
+          links: links,
+          categories: kinds,
+          focusNodeAdjacency: true,
+          roam: true,
+          label: {
+            normal: {
+
+              show: true,
+              position: 'top',
+
+            }
+          },
+          lineStyle: {
+            normal: {
+              color: 'source',
+              curveness: 0,
+              type: "solid"
+            }
+          }
+        }]
+      })
+        // graph.setOption({
+        //   backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+        //     offset: 0,
+        //     color: '#f7f8fa'
+        //   }, {
+        //     offset: 1,
+        //     color: '#cdd0d5'
+        //   }]),
+        //   title:{
+        //     text: "作者方向分析",
+        //     subtext: "每年发表的论文情况",
+        //     top: "top",
+        //     left: "center"
+        //   },
+        //   tooltip: {},
+        //   legend: [{
+        //     formatter: function (name) {
+        //       return echarts.format.truncateText(name, 40, '14px Microsoft Yahei', '…');
+        //     },
+        //     tooltip: {
+        //       show: true
+        //     },
+        //     selectedMode: 'false',
+        //     bottom: 20,
+        //     // data: ['计算机科学与教育软件学院', '地理科学学院', '机械与电气工程学院', '经济与统计学院', '土木工程学院', '新闻与传播学院', '外国语学院', '人文学院', '数学与信息科学学院', '工商管理学院', '法学院', '公共管理学院', '卫斯理安学院', '政治与公民教育学院', '旅游学院', '教育学院', '环境科学与工程学院', '化学化工学院', '物理与电子工程学院', '建筑与城市规划学院', '美术与设计学院', '生命科学学院', '体育学院', '音乐舞蹈学院']
+        //   }],
+        //   toolbox: {
+        //     show : true,
+        //     feature : {
+        //       dataView : {show: true, readOnly: true},
+        //       restore : {show: true},
+        //       saveAsImage : {show: true}
+        //     }
+        //   },
+        //   animationDuration: 3000,
+        //   animationEasingUpdate: 'quinticInOut',
+        //   series: [{
+        //     name: authorName,
+        //     type: 'graph',
+        //     layout: 'force',
+        //
+        //     force: {
+        //       repulsion: 50
+        //     },
+        //     data: data,
+        //     links: links,
+        //     categories: kinds,
+        //     focusNodeAdjacency: true,
+        //     roam: true,
+        //     label: {
+        //       normal: {
+        //
+        //         show: true,
+        //         position: 'top',
+        //
+        //       }
+        //     },
+        //     lineStyle: {
+        //       normal: {
+        //         color: 'source',
+        //         curveness: 0,
+        //         type: "solid"
+        //       }
+        //     }
+        //   }]
+        // })
     }
   },
   mounted () {
@@ -281,6 +418,7 @@ export default {
       console.log('ok')
       this.liquidFill()
       this.activityChart()
+      this.conGraph()
     },15000)
   }
 
